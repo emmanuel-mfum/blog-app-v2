@@ -81,6 +81,11 @@ app.get("/posts/:postID", function(req, res){
 
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+let port = process.env.PORT; // let port be the port Heroku has set up
+if (port == null || port == "") { // if it is not set up or port is an empty string
+  port = 3000;
+}
+
+app.listen(port, function() {
+  console.log("Server has started sucessfully");
 });
